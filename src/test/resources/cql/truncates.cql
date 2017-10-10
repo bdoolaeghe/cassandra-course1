@@ -1,0 +1,2 @@
+TRUNCATE temperature_by_city;
+TRUNCATE temperature_by_probe_date;
