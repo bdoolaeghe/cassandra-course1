@@ -1,7 +1,10 @@
-h2. FAQ
+FAQ
+===
 
+issue with no libsigar-amd64-linux.so
+-------------------------------------
 At java client startup, I get:
-{code}
+'''
 no libsigar-amd64-linux.so in java.library.path
 org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.path
 	at org.hyperic.sigar.Sigar.loadLibrary(Sigar.java:172)
@@ -16,7 +19,7 @@ org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.pat
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
-{code}
+'''
 
-h3. Solution
+**Solution**: 
 
