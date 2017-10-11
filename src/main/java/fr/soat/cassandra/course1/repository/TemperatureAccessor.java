@@ -9,26 +9,25 @@ import fr.soat.cassandra.course1.model.TemperatureByCity;
 import fr.soat.cassandra.course1.model.TemperatureByDate;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Accessor
 public interface TemperatureAccessor {
 
     @Query("SELECT * FROM temperature_by_city WHERE city = :city")
-    Result<List<TemperatureByCity>> getByCity(@Param("city") String city);
+    Result<TemperatureByCity> getByCity(@Param("city") String city);
 
     @Query("SELECT * FROM temperature_by_city WHERE city = :city")
-    ListenableFuture<List<TemperatureByCity>> getByCityAsync(@Param("city") String city);
+    ListenableFuture<Result<TemperatureByCity>> getByCityAsync(@Param("city") String city);
 
-    @Query("select * from temperature_by_city where city = :city limit 1")
+    @Query("SELECT * FROM temperature_by_city WHERE city = :city limit 1")
     Result<TemperatureByCity> getLastByCity(@Param("city") String city);
 
-    @Query("select * from temperature_by_city where city = :city and probe_date <= :before")
-    List<TemperatureByCity> getByCityUntil(@Param("city") String city, LocalDate before);
+    @Query("SELECT * FROM temperature_by_city WHERE city = :city and probe_date <= :before")
+    Result<TemperatureByCity> getByCityUntil(@Param("city") String city, LocalDate before);
 
-    @Query("select * from temperature_by_city where city = :city and probe_date <= :before order by probe_date asc")
-    List<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, LocalDate before);
+    @Query("SELECT * FROM temperature_by_city WHERE city = :city and probe_date <= :before order by probe_date asc")
+    Result<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, LocalDate before);
 
-    @Query("SELECT * FROM temperature_by_probe_date where probe_date = :when;\n")
-    List<TemperatureByDate> getByDate(@Param("when") LocalDate probeDate);
+    @Query("SELECT * FROM temperature_by_probe_date WHERE probe_date = :when;\n")
+    Result<TemperatureByDate> getByDate(@Param("when") LocalDate probeDate);
 }

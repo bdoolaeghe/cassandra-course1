@@ -56,7 +56,7 @@ public class TemparatureByDateRepository {
     /* cursotm queries with accessor */
 
     public List<TemperatureByDate> getByDate(LocalDate when) {
-        return accessor.getByDate(when);
+        return accessor.getByDate(when).all();
     }
 
 

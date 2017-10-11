@@ -23,3 +23,17 @@ org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.pat
 
 **Solution**: 
 
+
+
+Links
+=====
+Download
+--------
+* [Practical work|http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1]
+* [cassandra download|http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz]
+* [cassandra-unit|https://github.com/jsevellec/cassandra-unit]
+* [cassandra-unit examples|https://github.com/jsevellec/cassandra-unit-examples]
+Resources
+---------
+* [Markdown syntax|https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html]
+

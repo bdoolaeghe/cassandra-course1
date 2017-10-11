@@ -56,8 +56,8 @@ public class TemparatureByCityRepository {
 
     /* cursotm queries with accessor */
 
-    public Result<List<TemperatureByCity>> getByCity(String city) {
-        return accessor.getByCity(city);
+    public List<TemperatureByCity> getByCity(String city) {
+        return accessor.getByCity(city).all();
     }
 
     public Result<TemperatureByCity> getLastByCity(String city) {
@@ -65,11 +65,11 @@ public class TemparatureByCityRepository {
     }
 
     public List<TemperatureByCity> getByCityUntil(String city, LocalDate until) {
-        return accessor.getByCityUntil(city, until);
+        return accessor.getByCityUntil(city, until).all();
     }
 
     public List<TemperatureByCity> getByCityUntilAsc(String city, LocalDate until) {
-        return accessor.getByCityUntilAsc(city, until);
+        return accessor.getByCityUntilAsc(city, until).all();
     }
 
 }
