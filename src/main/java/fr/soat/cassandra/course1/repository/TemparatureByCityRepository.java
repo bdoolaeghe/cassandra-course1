@@ -3,7 +3,6 @@ package fr.soat.cassandra.course1.repository;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.MappingManager;
-import com.datastax.driver.mapping.Result;
 import com.google.common.util.concurrent.ListenableFuture;
 import fr.soat.cassandra.course1.model.TemperatureByCity;
 
@@ -60,8 +59,8 @@ public class TemparatureByCityRepository {
         return accessor.getByCity(city).all();
     }
 
-    public Result<TemperatureByCity> getLastByCity(String city) {
-        return accessor.getLastByCity(city);
+    public TemperatureByCity getLastByCity(String city) {
+        return accessor.getLastByCity(city).one();
     }
 
     public List<TemperatureByCity> getByCityUntil(String city, LocalDate until) {

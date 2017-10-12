@@ -13,12 +13,15 @@ import java.time.LocalDate;
 @Accessor
 public interface TemperatureAccessor {
 
+    // can use mapper ??
     @Query("SELECT * FROM temperature_by_city WHERE city = :city")
     Result<TemperatureByCity> getByCity(@Param("city") String city);
 
+    // can use mapper ??
     @Query("SELECT * FROM temperature_by_city WHERE city = :city")
     ListenableFuture<Result<TemperatureByCity>> getByCityAsync(@Param("city") String city);
 
+    // use case of accessor
     @Query("SELECT * FROM temperature_by_city WHERE city = :city limit 1")
     Result<TemperatureByCity> getLastByCity(@Param("city") String city);
 
@@ -28,6 +31,7 @@ public interface TemperatureAccessor {
     @Query("SELECT * FROM temperature_by_city WHERE city = :city and probe_date <= :before order by probe_date asc")
     Result<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, LocalDate before);
 
+    // second table
     @Query("SELECT * FROM temperature_by_probe_date WHERE probe_date = :when;\n")
     Result<TemperatureByDate> getByDate(@Param("when") LocalDate probeDate);
 }
