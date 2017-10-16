@@ -2,27 +2,42 @@ package fr.soat.cassandra.session;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
+import lombok.Getter;
 
 public class SessionProvider {
 
-    private static final String keyspaceName = "my_keyspace" ;
-    private Session session;
+    public static final String KEYSPACE = "my_keyspace";
 
-    private SessionProvider() {
-        init(this);
+    @Getter
+    private int port;
+
+    private Cluster cluster;
+
+    public SessionProvider() {
+        // dfault cassandra port
+        this(9042);
     }
 
-    private void init(SessionProvider sessionProvider) {
+    public SessionProvider(int port) {
+        this.port = port;
+        init(port);
+    }
+
+    private void init(int port) {
         Cluster.Builder clusterBuilder = Cluster.builder()
-                .addContactPoints("localhost");
-        Cluster cluster = clusterBuilder.build();
-        this.session = cluster.connect(keyspaceName);
+                .addContactPoints("localhost")
+                .withPort(port);
+        cluster = clusterBuilder.build();
+//        this.session = cluster.connect(keyspaceName);
+//        this.session = cluster.connect();
     }
 
-    private static SessionProvider INSTANCE = new SessionProvider();
+    public Session newSession() {
+        return cluster.connect();
+    }
 
-    public SessionProvider getInstance() {
-        return INSTANCE;
+    public Session newSession(String keyspace) {
+        return cluster.connect(keyspace);
     }
 
 }

@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "temperature_by_date")
+@Table(name = "temperature_by_probe_date")
 public class TemperatureByDate {
 
     @PartitionKey

@@ -26,10 +26,10 @@ public interface TemperatureAccessor {
     Result<TemperatureByCity> getLastByCity(@Param("city") String city);
 
     @Query("SELECT * FROM temperature_by_city WHERE city = :city and probe_date <= :before")
-    Result<TemperatureByCity> getByCityUntil(@Param("city") String city, LocalDate before);
+    Result<TemperatureByCity> getByCityUntil(@Param("city") String city, @Param("before") LocalDate before);
 
     @Query("SELECT * FROM temperature_by_city WHERE city = :city and probe_date <= :before order by probe_date asc")
-    Result<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, LocalDate before);
+    Result<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, @Param("before") LocalDate before);
 
     // second table
     @Query("SELECT * FROM temperature_by_probe_date WHERE probe_date = :when;\n")

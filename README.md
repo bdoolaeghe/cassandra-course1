@@ -29,7 +29,7 @@ FAQ
 
 issue with no libsigar-amd64-linux.so
 -------------------------------------
-At java client startup, I get:
+Cassandra junit fails with:
 ```
 no libsigar-amd64-linux.so in java.library.path
 org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.path
@@ -47,7 +47,10 @@ org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.pat
 	at java.lang.Thread.run(Thread.java:745)
 ```
 
-**Solution**: 
+**Solution**: download and unzip [Huperic sigar|https://sourceforge.net/projects/sigar/files/sigar/1.6/hyperic-sigar-1.6.4.zip/download] and add its lib/ path as VM options of your test:
+```
+-Djava.library.path=<path_to_lib/_of_sigar>
+```
 
 
 
