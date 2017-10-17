@@ -23,9 +23,9 @@ public class TemperatureServiceTest {
 
     private final LocalDate today = LocalDate.now();
 
-    private TemparatureByCityRepository temparatureByCityRepository;
-    private TemparatureByDateRepository temparatureByDateRepository;
-    private TemperatureService temperatureService;
+    private static TemparatureByCityRepository temparatureByCityRepository;
+    private static TemparatureByDateRepository temparatureByDateRepository;
+    private static TemperatureService temperatureService;
 
 
     @BeforeClass
@@ -43,7 +43,12 @@ public class TemperatureServiceTest {
         // create tables
         new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/create_table_temperature_by_city.cql", false));
         new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/create_table_temperature_by_probe_date.cql", false));
+        // instanciate service and repos
+        temparatureByCityRepository = new TemparatureByCityRepository(session);
+        temparatureByDateRepository = new TemparatureByDateRepository(session);
+        temperatureService = new TemperatureService(temparatureByCityRepository, temparatureByDateRepository);
     }
+
 
     @AfterClass
     public static void shutdownEmbededCassandra() {
@@ -53,10 +58,7 @@ public class TemperatureServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        temparatureByCityRepository = new TemparatureByCityRepository(session);
-        temparatureByDateRepository = new TemparatureByDateRepository(session);
-        temperatureService = new TemperatureService(temparatureByCityRepository, temparatureByDateRepository);
-
+        new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/truncate_table_temperature_by_city.cql", false));
         new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/insert_dataset.cql", false));
     }
 

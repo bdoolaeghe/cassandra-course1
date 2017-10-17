@@ -34,16 +34,20 @@
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
-            <!--<version>2.1.7</version>-->
             <version>3.3.0</version>
-            <!--3.0.7-->
+        </dependency>
+
+        <!-- extras for LocalDate-->
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-extras</artifactId>
+            <version>3.3.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-mapping</artifactId>
-            <!--<version>2.1.7</version>-->
-            <version>3.0.7</version>
+            <version>3.3.0</version>
         </dependency>
 
         <dependency>
@@ -77,7 +81,6 @@
         <dependency>
             <groupId>org.cassandraunit</groupId>
             <artifactId>cassandra-unit</artifactId>
-            <!--<version>2.1.9.2</version>-->
             <version>3.0.0.1</version>
             <scope>test</scope>
         </dependency>

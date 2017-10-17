@@ -2,6 +2,7 @@ package fr.soat.cassandra.session;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.extras.codecs.jdk8.LocalDateCodec;
 import lombok.Getter;
 
 public class SessionProvider {
@@ -28,8 +29,9 @@ public class SessionProvider {
                 .addContactPoints("localhost")
                 .withPort(port);
         cluster = clusterBuilder.build();
-//        this.session = cluster.connect(keyspaceName);
-//        this.session = cluster.connect();
+        // register type codecs
+        cluster.getConfiguration().getCodecRegistry()
+                .register(LocalDateCodec.instance);
     }
 
     public Session newSession() {
