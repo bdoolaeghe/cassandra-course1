@@ -4,83 +4,75 @@ import com.google.common.util.concurrent.ListenableFuture;
 import fr.soat.cassandra.course1.dto.Temperature;
 import fr.soat.cassandra.course1.model.TemperatureByCity;
 import fr.soat.cassandra.course1.model.TemperatureByDate;
-import fr.soat.cassandra.course1.repository.TemparatureByCityRepository;
-import fr.soat.cassandra.course1.repository.TemparatureByDateRepository;
+import fr.soat.cassandra.course1.repository.TemperatureByCityRepository;
+import fr.soat.cassandra.course1.repository.TemperatureByDateRepository;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class TemperatureService {
 
-    TemparatureByCityRepository temparatureByCityRepository;
-    TemparatureByDateRepository temparatureByDateRepository;
+    TemperatureByCityRepository temperatureByCityRepository;
+    TemperatureByDateRepository temperatureByDateRepository;
 
-    public TemperatureService(TemparatureByCityRepository temparatureByCityRepository, TemparatureByDateRepository temparatureByDateRepository) {
-        this.temparatureByCityRepository = temparatureByCityRepository;
-        this.temparatureByDateRepository = temparatureByDateRepository;
+    public TemperatureService(TemperatureByCityRepository temperatureByCityRepository, TemperatureByDateRepository temperatureByDateRepository) {
+        this.temperatureByCityRepository = temperatureByCityRepository;
+        this.temperatureByDateRepository = temperatureByDateRepository;
     }
 
-    public void createOrUpdate(List<Temperature> temperatures) {
-        throw new RuntimeException("implement me !");
+    public void createOrUpdate(Temperature... temperatures) {
+        Stream.of(temperatures).forEach(this::createOrUpdate);
     }
 
+    // Q30
     public void createOrUpdate(Temperature temperatures) {
         // save in //
-        ListenableFuture<Void> futureByCity = temparatureByCityRepository.saveAsync(toTemperatureByCity(temperatures));
-        ListenableFuture<Void> futureByProbeDate = temparatureByDateRepository.saveAsync(toTemperatureByProbeDate(temperatures));
-        // wait to resynchonize
+        ListenableFuture<Void> futureByCity = temperatureByCityRepository.saveAsync(toTemperatureByCity(temperatures));
+        ListenableFuture<Void> futureByDate = temperatureByDateRepository.saveAsync(toTemperatureBydate(temperatures));
+
+        // wait for termination
         try {
             futureByCity.get();
-            futureByProbeDate.get();
+            futureByDate.get();
         } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException("Failed to create or update " + temperatures, e);
+            throw new RuntimeException("fail to save temperature " + temperatures, e);
         }
     }
 
-    public static TemperatureByCity toTemperatureByCity(Temperature temperatures) {
-        return new TemperatureByCity(temperatures.getCity(), temperatures.getProbeDate(), temperatures.getTemperature());
+    // Q30
+    public List<Temperature> getByCity(String city) {
+        return temperatureByCityRepository.getByCity(city)
+                .stream()
+                .map(TemperatureService::toDto)
+                .collect(toList());
     }
 
-    public static TemperatureByDate toTemperatureByProbeDate(Temperature temperatures) {
-        return new TemperatureByDate(temperatures.getProbeDate(), temperatures.getCity(), temperatures.getTemperature());
+    // Q30
+    public List<Temperature> getByDate(LocalDate date) {
+        return temperatureByDateRepository.getByDate(date)
+                .stream()
+                .map(TemperatureService::toDto)
+                .collect(toList());
+    }
+
+    public static TemperatureByCity toTemperatureByCity(Temperature t) {
+        return (t == null) ? null : new TemperatureByCity(t.getCity(), t.getDate(), t.getTemperature());
+    }
+
+    public static TemperatureByDate toTemperatureBydate(Temperature t) {
+        return (t == null) ? null : new TemperatureByDate(t.getDate(), t.getCity(), t.getTemperature());
     }
 
     public static Temperature toDto(TemperatureByDate t) {
-        return new Temperature(t.getCity(), t.getProbeDate(), t.getTemperature());
+        return (t == null) ? null : new Temperature(t.getCity(), t.getDate(), t.getTemperature());
     }
 
     public static Temperature toDto(TemperatureByCity t) {
-        return new Temperature(t.getCity(), t.getProbeDate(), t.getTemperature());
-    }
-
-    public void delete(String city, LocalDate when) {
-        throw new RuntimeException("implement me !");
-    }
-
-    public Temperature get(String city, LocalDate when) {
-        return toDto(temparatureByCityRepository.getById(city, when));
-    }
-
-    public List<Temperature> get(LocalDate when) {
-        throw new RuntimeException("implement me !");
-    }
-
-    public List<Temperature> get(String city) {
-        throw new RuntimeException("implement me !");
-    }
-
-    public Temperature getLast(String city) {
-        throw new RuntimeException("implement me !");
-    }
-
-    public enum Order {
-        ASC,
-        DESC
-    }
-
-    public List<Temperature> getUntill(String city, LocalDate until, Order order) {
-        throw new RuntimeException("implement me !");
+        return (t == null) ? null : new Temperature(t.getCity(), t.getDate(), t.getTemperature());
     }
 
 }

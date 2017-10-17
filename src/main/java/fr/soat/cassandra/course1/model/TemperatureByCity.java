@@ -20,8 +20,8 @@ public class TemperatureByCity {
     private String city;
 
     @ClusteringColumn
-    @Column(name = "probe_date")
-    private LocalDate probeDate;
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(name = "temperature")
     private float temperature;

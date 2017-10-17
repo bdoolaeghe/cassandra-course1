@@ -17,10 +17,15 @@ Q21. get temperature in a city at a given date [mapper]
 Q22. asynchronously get temperature in a city at a given date [async mapper]
 Q23. get the last temperature in a given city [accessor]
 Q24. asynchronously get the last temperature in a given city [async accessor]
-Q25. "bulk" save a list of temperatures at some dates in some cities [bulk operations]
-Q26. get the temperatures in every city at a given date [second table]
+Q25. get the first temperature in a given city [accessor]
+Q26. save a "batch" of temperatures at some dates in some cities [bulk operations]
 Q27. get all the temperatures in chronological order in a given city before a given date [bonus]
-Q28. get all the temperatures in reverse-chronological order in a given city before a given date  [bonus]
+Q28. get all the temperatures in reverse-chronological order in a given city before a given date  
+Q29. get the temperatures in every city at a given date [second table]
+Q30. [bonus] create an aggregating service, to:
+* save a temperature in a city at a giben date
+* get the temperatures in a city at a giben date
+* get the temperatures everywhere at a given date
 
 
 
@@ -51,7 +56,22 @@ org.hyperic.sigar.SigarException: no libsigar-amd64-linux.so in java.library.pat
 ```
 -Djava.library.path=<path_to_lib/_of_sigar>
 ```
+r
 
+Codec not found for requested operation: [date <-> java.time.LocalDate]
+-----------------------------------------------------------------------
+```
+com.datastax.driver.core.exceptions.CodecNotFoundException: Codec not found for requested operation: [date <-> java.time.LocalDate]
+```
+
+**Solution:** [install "extras" driver codecs|http://docs.datastax.com/en/developer/java-driver/3.1/manual/custom_codecs/extras/] to map java.time.LocalDate to CQL date
+
+How to bulk load a dataset in cassandra in a unit test ?
+--------------------------------------------------------
+**Solution**: use CQLDataLoader.
+```
+new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/insert_dataset.cql", false));
+```
 
 
 Links

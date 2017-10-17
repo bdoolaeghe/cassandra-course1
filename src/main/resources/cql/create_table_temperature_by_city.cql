@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS temperature_by_city (
     city text,
-    probe_date date,
+    date date,
     temperature float,
-    PRIMARY KEY ((city), probe_date)
+    PRIMARY KEY ((city), date)
 )
-WITH CLUSTERING ORDER BY (probe_date desc);
+WITH CLUSTERING ORDER BY (date desc);

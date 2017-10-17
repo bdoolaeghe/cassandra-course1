@@ -13,6 +13,6 @@ import java.time.LocalDate;
 @Builder
 public class Temperature {
     private String city;
-    private LocalDate probeDate;
+    private LocalDate date;
     private float temperature;
 }

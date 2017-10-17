@@ -2,18 +2,22 @@ package fr.soat.cassandra.course1.service;
 
 import com.datastax.driver.core.Session;
 import fr.soat.cassandra.course1.dto.Temperature;
-import fr.soat.cassandra.course1.repository.TemparatureByCityRepository;
-import fr.soat.cassandra.course1.repository.TemparatureByDateRepository;
+import fr.soat.cassandra.course1.repository.TemperatureByCityRepository;
+import fr.soat.cassandra.course1.repository.TemperatureByDateRepository;
 import fr.soat.cassandra.session.SessionProvider;
 import org.apache.thrift.transport.TTransportException;
 import org.cassandraunit.CQLDataLoader;
-import org.cassandraunit.CassandraCQLUnit;
 import org.cassandraunit.dataset.cql.ClassPathCQLDataSet;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,9 +26,11 @@ public class TemperatureServiceTest {
     private static Session session;
 
     private final LocalDate today = LocalDate.now();
+    private final LocalDate yesterday = LocalDate.now().minus(1, ChronoUnit.DAYS );
+    private final LocalDate beforeYesterday = LocalDate.now().minus(2, ChronoUnit.DAYS );
 
-    private static TemparatureByCityRepository temparatureByCityRepository;
-    private static TemparatureByDateRepository temparatureByDateRepository;
+    private static TemperatureByCityRepository temperatureByCityRepository;
+    private static TemperatureByDateRepository temperatureByDateRepository;
     private static TemperatureService temperatureService;
 
 
@@ -42,11 +48,11 @@ public class TemperatureServiceTest {
         session = sessionProvider.newSession(SessionProvider.KEYSPACE);
         // create tables
         new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/create_table_temperature_by_city.cql", false));
-        new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/create_table_temperature_by_probe_date.cql", false));
+        new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/create_table_temperature_by_date.cql", false));
         // instanciate service and repos
-        temparatureByCityRepository = new TemparatureByCityRepository(session);
-        temparatureByDateRepository = new TemparatureByDateRepository(session);
-        temperatureService = new TemperatureService(temparatureByCityRepository, temparatureByDateRepository);
+        temperatureByCityRepository = new TemperatureByCityRepository(session);
+        temperatureByDateRepository = new TemperatureByDateRepository(session);
+        temperatureService = new TemperatureService(temperatureByCityRepository, temperatureByDateRepository);
     }
 
 
@@ -58,74 +64,48 @@ public class TemperatureServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/truncate_table_temperature_by_city.cql", false));
-        new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/insert_dataset.cql", false));
+        session.execute("truncate table temperature_by_city");
+        session.execute("truncate table temperature_by_date");
     }
 
+    // Q30
     @Test
-    public void should_be_able_to_save_a_temperature_in_a_given_city_and_date() throws Exception {
-//        // Given
-//        Temperature temperature = new Temperature("paris", today, 16);
-//        // When
-//        temperatureService.createOrUpdate(temperature);
-//        // Then
-//        Temperature reloadedTemperature = temperatureService.get("paris", today);
-//        assertEquals(temperature, reloadedTemperature);
-    }
-
-    @Test
-    public void should_be_able_to_get_temperatures_in_a_city() throws Exception {
+    public void should_be_able_to_save_and_reload_temperatures_in_a_city() throws Exception {
         // Given
-        Temperature temperature = new Temperature("paris", today, 16);
+        Temperature temperatureParisToday = new Temperature("paris", today, 15);
+        Temperature temperatureParisYesterday = new Temperature("paris", yesterday, 16);
+        Temperature temperatureBerlinToday = new Temperature("berlin", today, 17);
+        Temperature temperatureBerlinYesterday = new Temperature("berlin", yesterday, 14);
+        temperatureService.createOrUpdate(temperatureParisToday, temperatureBerlinToday, temperatureParisYesterday, temperatureBerlinYesterday);
+
         // When
-        temperatureService.createOrUpdate(temperature);
+        List<Temperature> temperaturesInParis = temperatureService.getByCity("paris");
+
         // Then
-        Temperature reloadedTemperature = temperatureService.get("paris", today);
-        assertEquals(temperature, reloadedTemperature);
+        assertEquals(2, temperaturesInParis.size());
+        assertEquals(temperatureParisToday, temperaturesInParis.get(0));
+        assertEquals(temperatureParisYesterday, temperaturesInParis.get(1));
     }
 
+    // Q30
     @Test
-    public void should_be_able_to_delete_one_temperature() throws Exception {
+    public void should_be_able_to_save_and_reload_temperatures_at_a_given_date() throws Exception {
+        // Given
+        Temperature temperatureParisToday = new Temperature("paris", today, 15);
+        Temperature temperatureParisYesterday = new Temperature("paris", yesterday, 16);
+        Temperature temperatureBerlinToday = new Temperature("berlin", today, 17);
+        Temperature temperatureBerlinYesterday = new Temperature("berlin", yesterday, 14);
+        temperatureService.createOrUpdate(temperatureParisToday, temperatureBerlinToday, temperatureParisYesterday, temperatureBerlinYesterday);
+
+        // When
+        List<Temperature> temperaturesToday = temperatureService.getByDate(today);
+
+        // Then
+        assertEquals(2, temperaturesToday.size());
+        assertEquals(temperatureBerlinToday, temperaturesToday.get(0));
+        assertEquals(temperatureParisToday, temperaturesToday.get(1));
     }
 
-    // Q21
-    @Test
-    public void should_be_able_to_get_a_temperature_in_a_city_at_a_given_date() throws Exception {
-    }
 
-    // Q22
-    @Test
-    public void should_be_able_to_async_get_a_temperature_in_a_city_at_a_given_date() throws Exception {
-    }
-
-    // Q25
-    @Test
-    public void should_be_able_to_bulk_save_temperatures() throws Exception {
-    }
-
-    // Q26
-    @Test
-    public void should_be_able_to_get_temperatures_everywhere_at_a_given_date() throws Exception {
-    }
-
-    // Q23
-    @Test
-    public void should_be_able_to_get_last_temperature_in_a_city() throws Exception {
-    }
-
-    // Q24
-    @Test
-    public void should_be_able_to_async_get_last_temperature_in_a_city() throws Exception {
-    }
-
-    // Q27
-    @Test
-    public void should_be_able_to_get_temperatures_in_a_city_until_a_bound_date() throws Exception {
-    }
-
-    // Q28
-    @Test
-    public void should_be_able_to_get_temperatures_in_a_city_until_a_bound_date_in_chronologic_reverse_order() throws Exception {
-    }
 
 }

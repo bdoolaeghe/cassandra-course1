@@ -8,19 +8,20 @@ import fr.soat.cassandra.course1.model.TemperatureByDate;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class TemparatureByDateRepository {
+public class TemperatureByDateRepository {
 
     private Session session;
     private MappingManager mappingManager;
     private Mapper<TemperatureByDate> mapper;
-    private TemperatureAccessor accessor;
+    private TemperatureByDateAccessor accessor;
 
-    public TemparatureByDateRepository(Session session) {
+    public TemperatureByDateRepository(Session session) {
         this.session = session;
         this.mappingManager = new MappingManager(session);
         this.mapper = mappingManager.mapper(TemperatureByDate.class);
-        this.accessor = mappingManager.createAccessor(TemperatureAccessor.class);
+        this.accessor = mappingManager.createAccessor(TemperatureByDateAccessor.class);
     }
 
     /* CRUD with datastax mapper */
@@ -33,24 +34,8 @@ public class TemparatureByDateRepository {
         return mapper.saveAsync(temperature);
     }
 
-    public TemperatureByDate getById(String city, LocalDate probeDate) {
-        return mapper.get(city, probeDate);
-    }
-
-    public ListenableFuture<TemperatureByDate> getByIdAsync(String city, LocalDate probeDate) {
-        return mapper.getAsync(city, probeDate);
-    }
-
-    public void deleteById(String city, LocalDate probeDate) {
-        mapper.delete(city, probeDate);
-    }
-
-    public void delete(TemperatureByDate temperature) {
-        mapper.delete(temperature);
-    }
-
-    public ListenableFuture<Void> deleteAsync(TemperatureByDate temperature) {
-        return mapper.deleteAsync(temperature);
+    public TemperatureByDate getById(String city, LocalDate date) {
+        return mapper.get(city, date);
     }
 
     /* cursotm queries with accessor */
@@ -59,5 +44,7 @@ public class TemparatureByDateRepository {
         return accessor.getByDate(when).all();
     }
 
-
+    public void save(TemperatureByDate ... temperatures) {
+        Stream.of(temperatures).forEach(this::save);
+    }
 }

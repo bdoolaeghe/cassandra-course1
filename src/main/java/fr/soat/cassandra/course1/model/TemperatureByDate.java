@@ -15,12 +15,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "temperature_by_probe_date")
+@Table(name = "temperature_by_date")
 public class TemperatureByDate {
 
     @PartitionKey
-    @Column(name = "probe_date")
-    private LocalDate probeDate;
+    @Column(name = "date")
+    private LocalDate date;
 
     @ClusteringColumn
     @Column(name = "city")
