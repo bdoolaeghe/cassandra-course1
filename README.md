@@ -104,7 +104,7 @@ CONSISTENCY;
 
 With the Datastax java driver, you can setup the CL at different levels:
 
-* when building your [Cluster](http://docs.datastax.com/en/drivers/java/2.0/com/datastax/driver/core/Cluster.html) (set a default CL):
+when building your [Cluster](http://docs.datastax.com/en/drivers/java/2.0/com/datastax/driver/core/Cluster.html) (set a default CL):
 ```java
 Cluster.Builder clusterBuilder = Cluster.builder()
                 .withQueryOptions(new QueryOptions().setConsistencyLevel(ConsistencyLevel.QUORUM));
