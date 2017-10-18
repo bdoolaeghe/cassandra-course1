@@ -87,8 +87,8 @@ How to bulk load a dataset in cassandra in a unit test ?
 new CQLDataLoader(session).load(new ClassPathCQLDataSet("cql/insert_dataset.cql", false));
 ```
 
-How can I change consistency level ([CL](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html#dmlConfigConsistency__dml-config-write-consistency))  ?
-------------------------------------------
+How can I change consistency level (CL) ?
+-----------------------------------------
 __The default ([CL](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html#dmlConfigConsistency__dml-config-write-consistency)) is set to ONE.__
 in a cqlsh, you can change ([CL](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html#dmlConfigConsistency)) before executing your request:
 ```
@@ -105,21 +105,21 @@ CONSISTENCY;
 With the Datastax java driver, you can setup the CL at different levels:
 
 * when building your [Cluster](http://docs.datastax.com/en/drivers/java/2.0/com/datastax/driver/core/Cluster.html) (set a default CL):
-```
+```java
 Cluster.Builder clusterBuilder = Cluster.builder()
                 .withQueryOptions(new QueryOptions().setConsistencyLevel(ConsistencyLevel.QUORUM));
 cluster = clusterBuilder.build();
 ```
 Using the [Mapper.option](http://docs.datastax.com/en/developer/java-driver/2.1/manual/object_mapper/using/#mapper-options), On the Mapper: 
-```
+```java
 mapper.setDefaultGetOptions(Mapper.Option.consistencyLevel(ConsistencyLevel.QUORUM);
 ```
 Or on a Mapper method invokation:
-```
+```java
 mapper.save(myEntity, Mapper.Option.consistencyLevel(ConsistencyLevel.QUORUM);
 ```
 And also on the [Accessor](http://docs.datastax.com/en/drivers/java/2.1/com/datastax/driver/mapping/annotations/Accessor.html) with [@QueryParameters](http://docs.datastax.com/en/developer/java-driver/2.1/manual/object_mapper/using/#customizing-the-statement):
-```
+```java
 @Query("SELECT * FROM ks.users")
 @QueryParameters(consistency="QUORUM")
 public ListenableFuture<Result<User>> getAllAsync();
@@ -127,14 +127,16 @@ public ListenableFuture<Result<User>> getAllAsync();
 
 Links
 =====
+
 Download
 --------
 * [Practical work](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1)
 * [cassandra download](http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz)
-* [cassandra-unit](https://github.com/jsevellec/cassandra-unit)
-* [cassandra-unit examples](https://github.com/jsevellec/cassandra-unit-examples)
+
 Resources
 ---------
 * [CQL3 syntax](https://github.com/apache/cassandra/blob/cassandra-2.0/doc/cql3/CQL.textile)
 * [Markdown syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+* [cassandra-unit](https://github.com/jsevellec/cassandra-unit)
+* [cassandra-unit examples](https://github.com/jsevellec/cassandra-unit-examples)
 
