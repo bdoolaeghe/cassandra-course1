@@ -8,10 +8,10 @@ Table of Contents
       * [issue with no libsigar-amd64-linux.so](#issue-with-no-libsigar-amd64-linuxso)
       * [Codec not found for requested operation: [date &lt;-&gt; java.time.LocalDate]](#codec-not-found-for-requested-operation-date---javatimelocaldate)
       * [How to bulk load a dataset in cassandra in a unit test ?](#how-to-bulk-load-a-dataset-in-cassandra-in-a-unit-test-)
-      * [How can I change consistency level (<a href="https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html#dmlConfigConsistency__dml-config-write-consistency">CL</a>)  ?](#how-can-i-change-consistency-level-cl--)
+      * [How can I change consistency level (CL) ?](#how-can-i-change-consistency-level-cl-)
    * [Links](#links)
       * [Download](#download)
-
+      * [Resources](#resources)
 
 Training
 ========
