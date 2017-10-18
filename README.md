@@ -3,29 +3,29 @@ Training
 CQL
 ---
 write the following CQL queries:
-* get temperature in a city at a given date [base query]
-* get the last temperature in a given city [limit]
-* get the temperatures in every city at a given date [second table]
-* get all the temperatures in chronological order in a given city before a given date [<=]
-* get all the temperatures in reverse-chronological order in a given city before a given date [order by]
+* [Q1.1] get temperature in a city at a given date [base query]
+* [Q1.2] get the last temperature in a given city [limit]
+* [Q1.3] get the temperatures in every city at a given date [second table]
+* [Q1.4] get all the temperatures in chronological order in a given city before a given date [<=]
+* [Q1.5] get all the temperatures in reverse-chronological order in a given city before a given date [order by]
 
 
 Java Datastax driver
 --------------------
 Write the following services, with a unit test:
-Q21. get temperature in a city at a given date [mapper]
-Q22. asynchronously get temperature in a city at a given date [async mapper]
-Q23. get the last temperature in a given city [accessor]
-Q24. asynchronously get the last temperature in a given city [async accessor]
-Q25. get the first temperature in a given city [accessor]
-Q26. save a "batch" of temperatures at some dates in some cities [bulk operations]
-Q27. get all the temperatures in chronological order in a given city before a given date [bonus]
-Q28. get all the temperatures in reverse-chronological order in a given city before a given date  
-Q29. get the temperatures in every city at a given date [second table]
+* [Q2.1] get temperature in a city at a given date [mapper]
+* [Q2.2] asynchronously get temperature in a city at a given date [async mapper]
+* [Q2.3] get the last temperature in a given city [accessor]
+* [Q2.4] asynchronously get the last temperature in a given city [async accessor]
+* [Q2.5] get the first temperature in a given city [accessor]
+* [Q2.6] save a "batch" of temperatures at some dates in some cities [bulk operations]
+* [Q2.7] get all the temperatures in chronological order in a given city before a given date [bonus]
+* [Q2.8] get all the temperatures in reverse-chronological order in a given city before a given date  
+* [Q2.9] get the temperatures in every city at a given date [second table]
 Q30. [bonus] create an aggregating service, to:
-* save a temperature in a city at a giben date
-* get the temperatures in a city at a giben date
-* get the temperatures everywhere at a given date
+ * save a temperature in a city at a giben date
+ * get the temperatures in a city at a giben date
+ * get the temperatures everywhere at a given date
 
 
 
