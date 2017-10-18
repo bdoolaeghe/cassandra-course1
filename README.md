@@ -1,7 +1,22 @@
+Table of Contents
+=================
+
+   * [Training](#training)
+      * [Practice the CQL](#practice-the-cql)
+      * [Practice the java Datastax driver](#practice-the-java-datastax-driver)
+   * [FAQ](#faq)
+      * [issue with no libsigar-amd64-linux.so](#issue-with-no-libsigar-amd64-linuxso)
+      * [Codec not found for requested operation: [date &lt;-&gt; java.time.LocalDate]](#codec-not-found-for-requested-operation-date---javatimelocaldate)
+      * [How to bulk load a dataset in cassandra in a unit test ?](#how-to-bulk-load-a-dataset-in-cassandra-in-a-unit-test-)
+      * [How can I change consistency level (<a href="https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html#dmlConfigConsistency__dml-config-write-consistency">CL</a>)  ?](#how-can-i-change-consistency-level-cl--)
+   * [Links](#links)
+      * [Download](#download)
+
+
 Training
 ========
-CQL
----
+Practice the CQL
+----------------
 write the following CQL queries:
 * [Q1.1] get temperature in a city at a given date [base query]
 * [Q1.2] get the last temperature in a given city [limit]
@@ -10,8 +25,8 @@ write the following CQL queries:
 * [Q1.5] get all the temperatures in reverse-chronological order in a given city before a given date [order by]
 
 
-Java Datastax driver
---------------------
+Practice the java Datastax driver
+---------------------------------
 Write the following services, with a unit test:
 * [Q2.1] get temperature in a city at a given date [mapper]
 * [Q2.2] asynchronously get temperature in a city at a given date [async mapper]
