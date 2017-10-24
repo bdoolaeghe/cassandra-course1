@@ -55,7 +55,7 @@ cqlsh -f insert_dataset_for_temperature_by_city.cql
 
 ```
 cqlsh
-``
+```
 
 **Now your turn !** Write the following CQL queries:
 * **[Q1.0]** get all temperatures in paris [basic query]
