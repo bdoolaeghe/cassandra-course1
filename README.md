@@ -61,7 +61,7 @@ cqlsh
 * **[Q1.0]** get all temperatures in paris [basic query]
 * **[Q1.1]** get temperature in paris the '2017-01-02' [basic query]
 * **[Q1.2]** get the last temperature in paris [LIMIT]
-* **[Q1.3]** get all the temperatures in 'berlin' between the 1 and 3 january 2017 [<=]
+* **[Q1.3]** get all the temperatures in 'berlin' between the 1 and 3 january 2017 [slice]
 * **[Q1.4]** get all the temperatures in 'berlin' between the 1 and 3 january 2017 in reverse chronological order [order by]
 * **[Q1.5]** get the temperature in every city the '2017-01-01' [query by date]
 
