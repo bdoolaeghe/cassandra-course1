@@ -37,6 +37,8 @@ SELECT * FROM temperature_by_city WHERE date = '2017-01-01'
 **solution 2:**
 
 ```
+cqlsh -f create_table_temperature_by_date.cql
+cqlsh -f insert_dataset_for_temperature_by_date.cql
 SELECT * FROM temperature_by_date WHERE date = '2017-01-01'
 ```
 
