@@ -30,6 +30,7 @@ public class TemperatureByDateRepository {
         mapper.save(temperature);
     }
 
+    // Q2.9
     public ListenableFuture<Void> saveAsync(TemperatureByDate temperature) {
         return mapper.saveAsync(temperature);
     }
@@ -40,6 +41,7 @@ public class TemperatureByDateRepository {
 
     /* cursotm queries with accessor */
 
+    // Q2.9
     public List<TemperatureByDate> getByDate(LocalDate when) {
         return accessor.getByDate(when).all();
     }
