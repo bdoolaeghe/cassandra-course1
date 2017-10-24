@@ -66,8 +66,8 @@ cqlsh
 * **[Q1.5]** get the temperature in every city the '2017-01-01' [query by date]
 
 
-Practice the java Datastax driver
----------------------------------
+TP2 - Practice the java Datastax driver
+---------------------------------------
 Write the following services, with a unit test:
 * [Q2.1] get temperature in a city at a given date [mapper]
 * [Q2.2] asynchronously get temperature in a city at a given date [async mapper]
