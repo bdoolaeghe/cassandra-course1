@@ -17,7 +17,8 @@ TP1 - solutions
 ```
 * **[Q1.3]**
 
-``` select * from temperature_by_city where city = 'berlin' and date <= '2017-01-03' and date >= '2017-01-01';
+```
+ select * from temperature_by_city where city = 'berlin' and date <= '2017-01-03' and date >= '2017-01-01';
 ```
 * **[Q1.4]**
 
