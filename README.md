@@ -28,6 +28,7 @@ export PATH="$CASSANDRA_HOME/bin:$PATH"
 ```
 
 * startup single cassandra node:
+
 ```
 bin/cassandra
 ```
@@ -36,18 +37,22 @@ Practice the CQL with cqlsh
 ---------------------------
 Insert some data for playing with, using **cqlsh**:
 * create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
+
 ```
 cqlsh -f create_keyspace.cql
 ```
 * create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
+
 ```
 cqlsh -f create_table_temperature_by_city.cql
 ```
 * insert a [sample dataset]()
+
 ```
 cqlsh -f insert_dataset_for_temperature_by_city.cql
 ```
 * then, connect to the interactive cassandra CLI:
+
 ```
 cqlsh
 ```
