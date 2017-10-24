@@ -1,7 +1,7 @@
 Training
 ========
-* [TP1]()  - Practice CQL
-* [TP2]()  - Practice the CQL java driver
+* [TP1](TPs/TP1/TP1.md)  - Practice CQL
+* [TP2](TPs/TP2/TP2.md)  - Practice the CQL java driver
 
 FAQ
 ===
