@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS temperature_by_date (
+CREATE TABLE IF NOT EXISTS my_keyspace.temperature_by_date (
     date date,
     city text,
     temperature float,
