@@ -17,7 +17,7 @@ Training
 ========
 TP1 - Practice CQL
 ------------------
-Install Cassandra server:
+_Install Cassandra server_
 * [download](http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz) cassandra tar ball
 * untar in a local directory (e.g. in ''~/dev/cassandra/apache-cassandra-3.0.14'')
 * setup environment variables:
@@ -34,23 +34,24 @@ export PATH="$CASSANDRA_HOME/bin:$PATH"
 bin/cassandra
 ```
 
-* Now, insert some data for playing with, using **cqlsh**:
- * create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
+_Now, connect to server with **cqlsh** client, and insert some data for playing with.._
+
+* create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
 
 ```
 cqlsh -f create_keyspace.cql
 ```
- * create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
+* create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
 
 ```
 cqlsh -f create_table_temperature_by_city.cql
 ```
- * insert a [sample dataset]()
+* insert a [sample dataset]()
 
 ```
 cqlsh -f insert_dataset_for_temperature_by_city.cql
 ```
- * connect to the interactive cassandra CLI:
+* connect to cqlsh in interactive mode:
 
 ```
 cqlsh
