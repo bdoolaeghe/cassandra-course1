@@ -43,7 +43,7 @@ public class TemperatureByCityRepository {
         return mapper.saveAsync(temperature);
     }
 
-    // Q22
+    // Q
     public void saveBatch(TemperatureByCity ... temperatures) {
         // save in parallel !
         List<ListenableFuture<Void>> futures = Stream.of(temperatures)
@@ -60,10 +60,12 @@ public class TemperatureByCityRepository {
         });
     }
 
+    // Q2.1
     public TemperatureByCity getById(String city, LocalDate date) {
         return mapper.get(city, date);
     }
 
+    // Q2.2
     public ListenableFuture<TemperatureByCity> getByIdAsync(String city, LocalDate date) {
         return mapper.getAsync(city, date);
     }
