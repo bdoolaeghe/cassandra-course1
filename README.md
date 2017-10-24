@@ -20,13 +20,13 @@ Install Cassandra server
 * [download](http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz) cassandra tar ball
 * untar in a local directory (e.g. in ''~/dev/cassandra/apache-cassandra-3.0.14'')
 * setup environment variables:
-```shell
+```
 cd dev/cassandra/apache-cassandra-3.0.14/
 export CASSANDRA_HOME=`pwd`
 export PATH="$CASSANDRA_HOME/bin:$PATH"
 ```
 * startup single cassandra node:
-```shell
+```
 bin/cassandra
 ```
 
@@ -34,19 +34,19 @@ Practice the CQL with cqlsh
 ---------------------------
 Insert some data for playing with, using **cqlsh**:
 * create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
-```shell
+```
 cqlsh -f create_keyspace.cql
 ```
 * create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
-```shell
+```
 cqlsh -f create_table_temperature_by_city.cql
 ```
 * insert a [sample dataset]()
-```shell
+```
 cqlsh -f insert_dataset_for_temperature_by_city.cql
 ```
 * then, connect to the interactive cassandra CLI:
-```shell
+```
 cqlsh
 ```
 
