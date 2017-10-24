@@ -1,6 +1,8 @@
 package fr.soat.cassandra.session;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ConsistencyLevel;
+import com.datastax.driver.core.QueryOptions;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.extras.codecs.jdk8.LocalDateCodec;
 import lombok.Getter;
@@ -28,6 +30,7 @@ public class SessionProvider {
         Cluster.Builder clusterBuilder = Cluster.builder()
                 .addContactPoints("localhost")
                 .withPort(port);
+//                .withQueryOptions(new QueryOptions().setConsistencyLevel(ConsistencyLevel.QUORUM));
         cluster = clusterBuilder.build();
         // register type codecs
         cluster.getConfiguration().getCodecRegistry()

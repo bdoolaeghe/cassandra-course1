@@ -15,14 +15,49 @@ Table of Contents
 
 Training
 ========
-Practice the CQL
-----------------
-write the following CQL queries:
-* [Q1.1] get temperature in a city at a given date [base query]
-* [Q1.2] get the last temperature in a given city [limit]
-* [Q1.3] get the temperatures in every city at a given date [second table]
-* [Q1.4] get all the temperatures in chronological order in a given city before a given date [<=]
-* [Q1.5] get all the temperatures in reverse-chronological order in a given city before a given date [order by]
+Install Cassandra server
+------------------------
+* [download](http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz) cassandra tar ball
+* untar in a local directory (e.g. in ''~/dev/cassandra/apache-cassandra-3.0.14'')
+
+* setup environment variables:
+```bash
+cd dev/cassandra/apache-cassandra-3.0.14/
+export CASSANDRA_HOME=`pwd`
+export PATH="$CASSANDRA_HOME/bin:$PATH"
+```
+* startup single cassandra node:
+```
+bin/cassandra
+```
+
+Practice the CQL with cqlsh
+---------------------------
+Insert some data for playing with, using **cqlsh**:
+* create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
+```
+cqlsh -f create_keyspace.cql
+```
+* create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
+```
+cqlsh -f create_table_temperature_by_city.cql
+```
+* insert a [sample dataset]()
+```
+cqlsh -f insert_dataset_for_temperature_by_city.cql
+```
+* then, connect to the interactive cassandra CLI:
+```
+cqlsh
+```
+
+
+Then, write the following CQL queries:
+* **[Q1.1]** get temperature in a city at a given date [basic query]
+* **[Q1.2]** get the last temperature in a given city [LIMIT]
+* **[Q1.3]** get all the temperatures in a given city before a given date [<=]
+* **[Q1.4]** get all the temperatures in reverse-chronological order in a given city before a given date [order by]
+* **[Q1.5]** get the temperatures in every city at a given date [second table]
 
 
 Practice the java Datastax driver
@@ -136,7 +171,10 @@ Download
 Resources
 ---------
 * [CQL3 syntax](https://github.com/apache/cassandra/blob/cassandra-2.0/doc/cql3/CQL.textile)
-* [Markdown syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+* [Datastax drivers](http://docs.datastax.com/en/developer/driver-matrix/doc/common/driverMatrix.html)
+* [Datastax java driver documentation](https://docs.datastax.com/en/developer/java-driver/3.3/)
 * [cassandra-unit](https://github.com/jsevellec/cassandra-unit)
 * [cassandra-unit examples](https://github.com/jsevellec/cassandra-unit-examples)
 
+* [Markdown syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+* [MD TOC generator](https://github.com/ekalinin/github-markdown-toc)
