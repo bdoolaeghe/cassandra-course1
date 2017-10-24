@@ -20,7 +20,7 @@ Super bonus
 -----------
 * [Q2.9] write in _TemperatureByDateRepository_ new repository the method _getByDate(date)_, to get the temperatures in every city at a given date (hint: use table temperature_by_date, with [create_table_temperature_by_date.cql](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_date.cql) and [insert_dataset_for_temperature_by_date.cql](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/insert_dataset_for_temperature_by_date.cql) )
 * [Q2.10] create an aggregating service _TemperatureService_, to:
- * save a temperature in a city at a given date (hint: delegate to the 2 underlying repositories _TemperatureByCityRepository_ and __TemperatureByDateRepository_)
+ * save a temperature in a city at a given date (hint: delegate to the 2 underlying repositories _TemperatureByCityRepository_ and _TemperatureByDateRepository_)
  * get the temperatures in a city at a given date
  * get the temperatures everywhere at a given date
 
