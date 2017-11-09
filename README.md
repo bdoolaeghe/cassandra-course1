@@ -6,6 +6,19 @@ Training
 FAQ
 ===
 
+What does the CQL clause "ALLOW FILTERING" means ?
+--------------------------------------------------
+If you try a SELECT CQL query and get the following return:
+```
+Bad Request: Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING.
+```
+That means you are trying to SELECT a set of data which can not be directly identified by cassandra cluster. You have 3 solutions:
+* add the CQL clause "ALLOW FILTERING" to your SELECT query, but this may be particulary unefficient and costfull for cassandra (such as a RDBMS full scan)
+* create a secondary index (but this also implies some performance overhead for read and for write operations)
+* redesign your data model and create a new table containing your data with PK matching your SELECT criteria.
+
+See [More details](https://www.datastax.com/dev/blog/allow-filtering-explained-2)
+
 issue with no libsigar-amd64-linux.so
 -------------------------------------
 Cassandra junit fails with:
