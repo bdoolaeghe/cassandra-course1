@@ -28,13 +28,18 @@ TP1 - solutions
 * **[Q1.5]** 
 
 **solution 1:**
+```
+SELECT * FROM temperature_by_city WHERE date = '2017-01-01' ALLOW FILTERING;
+```
+
+**solution 2:**
 
 ```
 CREATE INDEX idx_temperature_by_date ON temperature_by_city (date) ; 
 SELECT * FROM temperature_by_city WHERE date = '2017-01-01'
 ```
 
-**solution 2:**
+**solution 3:**
 
 ```
 cqlsh -f create_table_temperature_by_date.cql
