@@ -108,6 +108,7 @@ Download
 Resources
 ---------
 * [CQL3 syntax](https://github.com/apache/cassandra/blob/cassandra-2.0/doc/cql3/CQL.textile)
+* [Cassandra Data Modeling](https://www.datastax.com/dev/blog/basic-rules-of-cassandra-data-modeling)
 * [Datastax drivers](http://docs.datastax.com/en/developer/driver-matrix/doc/common/driverMatrix.html)
 * [Datastax java driver documentation](https://docs.datastax.com/en/developer/java-driver/3.3/)
 * [cassandra-unit](https://github.com/jsevellec/cassandra-unit)
