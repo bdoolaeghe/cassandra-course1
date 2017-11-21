@@ -2,7 +2,7 @@ TP2 - Practice the java Datastax driver
 =======================================
 Clone the java Maven project [cassandra-course1/TPS/TP2](TPs/TP2), and import it in your favorite IDE. You can see the project is partly implemented...
 
-Now, write in [TemperatureByCityRepository]|(TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) the following methods, with a unit test in in [TemperatureByCityRepository]|(TPs/TP2/src/test/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepositoryTest.java), :
+Now, write in [TemperatureByCityRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) the following methods, with a unit test in in [TemperatureByCityRepository](TPs/TP2/src/test/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepositoryTest.java), :
 * [Q2.1] _getById(city, date)_, returning the temperature in a city at a given date (hint: use the _Mapper<TemperatureByCity>_)
 * [Q2.2] _getByIdAsync(city, date)_, same -- but asynchronous -- mehtod as _getById(city, date)_  (hint: also use the Mapper<TemperatureByCity>)
 * [Q2.3] _getLastByCity(city)_, giving the last temperature in a given city (hint: use _TemperatureByCityAccessor_)
