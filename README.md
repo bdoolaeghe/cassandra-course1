@@ -11,7 +11,7 @@ some [FAQ](FAQ.md) about Cassandra, Datastax and java driver
 
 Download
 ========
-* [Practical work](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1)
+* [Practical work](./)
 * [cassandra download](http://www.apache.org/dyn/closer.lua/cassandra/3.0.14/apache-cassandra-3.0.14-bin.tar.gz)
 
 Ressources

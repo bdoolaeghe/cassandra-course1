@@ -19,17 +19,17 @@ bin/cassandra
 
 _Now, connect to server with **cqlsh** client, and insert some data for playing with.._
 
-* create the keyspace ['my_keyspace'](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_keyspace.cql):
+* create the keyspace ['my_keyspace'](TPS/TP2/src/main/resources/cql/create_keyspace.cql):
 
 ```
 cqlsh -f create_keyspace.cql
 ```
-* create the table [temperature_by_city](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/blob/master/src/main/resources/cql/create_table_temperature_by_city.cql):
+* create the table [temperature_by_city](TPS/TP2/src/main/resources/cql/create_table_temperature_by_city.cql):
 
 ```
 cqlsh -f create_table_temperature_by_city.cql
 ```
-* insert a [sample dataset]()
+* insert a [sample dataset](TPS/TP2/src/main/resources/cql/insert_dataset_for_temperature_by_city.cql)
 
 ```
 cqlsh -f insert_dataset_for_temperature_by_city.cql
