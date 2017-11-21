@@ -1,0 +1,1 @@
+truncate table temperature_by_date ;

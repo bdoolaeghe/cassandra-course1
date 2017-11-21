@@ -1,6 +1,6 @@
 TP2 - Practice the java Datastax driver
 =======================================
-Clone the java Maven project [cassandra-course1](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1), and import it in your favorite IDE. You can see the project is partly implemented...
+Clone the java Maven project [cassandra-course1](http://gitlab.soat.fr/bruno.doolaeghe/cassandra-course1/tree/master/TPs/TP2), and import it in your favorite IDE. You can see the project is partly implemented...
 
 Now, write in _TemperatureByCityRepository_ the following methods, with a unit test in in _TemperatureByCityRepositoryTest_, :
 * [Q2.1] _getById(city, date)_, returning the temperature in a city at a given date (hint: use the _Mapper<TemperatureByCity>_)
