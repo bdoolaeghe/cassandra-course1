@@ -68,7 +68,7 @@ public class TemperatureServiceTest {
         session.execute("truncate table temperature_by_date");
     }
 
-    // Q30
+    // Q2.10
     @Test
     public void should_be_able_to_save_and_reload_temperatures_in_a_city() throws Exception {
         // Given
@@ -87,7 +87,7 @@ public class TemperatureServiceTest {
         assertEquals(temperatureParisYesterday, temperaturesInParis.get(1));
     }
 
-    // Q30
+    // Q2.10
     @Test
     public void should_be_able_to_save_and_reload_temperatures_at_a_given_date() throws Exception {
         // Given

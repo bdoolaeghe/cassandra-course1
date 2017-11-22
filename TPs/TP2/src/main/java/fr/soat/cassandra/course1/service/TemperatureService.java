@@ -29,17 +29,17 @@ public class TemperatureService {
     }
 
     // Q2.10
-    public void createOrUpdate(Temperature temperatures) {
+    public void createOrUpdate(Temperature temperature) {
         // save in //
-        ListenableFuture<Void> futureByCity = temperatureByCityRepository.saveAsync(toTemperatureByCity(temperatures));
-        ListenableFuture<Void> futureByDate = temperatureByDateRepository.saveAsync(toTemperatureBydate(temperatures));
+        ListenableFuture<Void> futureByCity = temperatureByCityRepository.saveAsync(toTemperatureByCity(temperature));
+        ListenableFuture<Void> futureByDate = temperatureByDateRepository.saveAsync(toTemperatureBydate(temperature));
 
         // wait for termination
         try {
             futureByCity.get();
             futureByDate.get();
         } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException("fail to save temperature " + temperatures, e);
+            throw new RuntimeException("fail to save temperature " + temperature, e);
         }
     }
 
