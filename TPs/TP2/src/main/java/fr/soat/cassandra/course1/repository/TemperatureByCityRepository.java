@@ -43,31 +43,14 @@ public class TemperatureByCityRepository {
         return mapper.saveAsync(temperature);
     }
 
-    // Q2.6
-    public void saveBatch(TemperatureByCity ... temperatures) {
-        // save in parallel !
-        List<ListenableFuture<Void>> futures = Stream.of(temperatures)
-                .map(this::saveAsync)
-                .collect(toList());
-
-        // wait for terminations
-        futures.forEach(f -> {
-            try {
-                f.get();
-            } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException("Failed to batch save temperatures",e);
-            }
-        });
-    }
-
     // Q2.1
     public TemperatureByCity getById(String city, LocalDate date) {
-        return mapper.get(city, date);
+        throw new RuntimeException("implement me !");
     }
 
     // Q2.2
     public ListenableFuture<TemperatureByCity> getByIdAsync(String city, LocalDate date) {
-        return mapper.getAsync(city, date);
+        throw new RuntimeException("implement me !");
     }
 
     public void deleteById(String city, LocalDate date) {
@@ -82,26 +65,32 @@ public class TemperatureByCityRepository {
 
     // Q2.3
     public TemperatureByCity getLastByCity(String city) {
-        return accessor.getLastByCity(city);
+        throw new RuntimeException("implement me !");
     }
 
     // Q2.4
     public ListenableFuture<TemperatureByCity> getLastByCityAsync(String city) {
-        return accessor.getLastByCityAsync(city);
-    }
-
-    //Q2.7
-    public List<TemperatureByCity> getByCityUntil(String city, LocalDate until) {
-        return accessor.getByCityUntil(city, until).all();
-    }
-
-    //Q2.8
-    public List<TemperatureByCity> getByCityUntilAsc(String city, LocalDate until) {
-        return accessor.getByCityUntilAsc(city, until).all();
+        throw new RuntimeException("implement me !");
     }
 
     // Q2.5
     public TemperatureByCity getFirstByCity(String city) {
-        return accessor.getFirstByCity(city);
+        throw new RuntimeException("implement me !");
     }
+
+    // Q2.6
+    public void saveBatch(TemperatureByCity ... temperatures) {
+        throw new RuntimeException("implement me !");
+    }
+
+    //Q2.7
+    public List<TemperatureByCity> getByCityUntil(String city, LocalDate until) {
+        throw new RuntimeException("implement me !");
+    }
+
+    //Q2.8
+    public List<TemperatureByCity> getByCityUntilAsc(String city, LocalDate until) {
+        throw new RuntimeException("implement me !");
+    }
+
 }

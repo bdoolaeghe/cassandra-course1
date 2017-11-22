@@ -19,20 +19,6 @@ public interface TemperatureByCityAccessor {
     ListenableFuture<Result<TemperatureByCity>> getByCityAsync(@Param("city") String city);
 
     // use case of accessor
-    @Query("SELECT * FROM temperature_by_city WHERE city = :city limit 1")
-    TemperatureByCity getLastByCity(@Param("city") String city);
-
-    @Query("SELECT * FROM temperature_by_city WHERE city = :city limit 1")
-    ListenableFuture<TemperatureByCity> getLastByCityAsync(@Param("city") String city);
-
-    @Query("SELECT * FROM temperature_by_city WHERE city = :city and date <= :before")
-    Result<TemperatureByCity> getByCityUntil(@Param("city") String city, @Param("before") LocalDate before);
-
-    @Query("SELECT * FROM temperature_by_city WHERE city = :city and date <= :before order by date asc")
-    Result<TemperatureByCity> getByCityUntilAsc(@Param("city") String city, @Param("before") LocalDate before);
-
-    //Q25
-    @Query("SELECT * FROM temperature_by_city WHERE city = :city ORDER BY date ASC LIMIT 1")
-    TemperatureByCity getFirstByCity(@Param("city") String city);
+    // ...
 
 }

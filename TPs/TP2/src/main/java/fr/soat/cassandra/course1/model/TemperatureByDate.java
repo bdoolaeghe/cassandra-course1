@@ -13,20 +13,13 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "temperature_by_date")
 public class TemperatureByDate {
 
-    @PartitionKey
-    @Column(name = "date")
-    private LocalDate date;
-
-    @ClusteringColumn
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "temperature")
-    private float temperature;
+    // Q2.9
+    public TemperatureByDate(LocalDate date, String city, float temperature) {
+        throw new RuntimeException("implement me !");
+    }
 
 }

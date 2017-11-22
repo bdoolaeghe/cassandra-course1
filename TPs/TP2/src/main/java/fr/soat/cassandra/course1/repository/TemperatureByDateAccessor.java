@@ -11,7 +11,4 @@ import java.time.LocalDate;
 @Accessor
 public interface TemperatureByDateAccessor {
 
-    // Q29
-    @Query("SELECT * FROM temperature_by_date WHERE date = :when;\n")
-    Result<TemperatureByDate> getByDate(@Param("when") LocalDate date);
 }

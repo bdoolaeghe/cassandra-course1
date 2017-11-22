@@ -24,29 +24,27 @@ public class TemperatureByDateRepository {
         this.accessor = mappingManager.createAccessor(TemperatureByDateAccessor.class);
     }
 
-    /* CRUD with datastax mapper */
+    // Q2.9
 
     public void save(TemperatureByDate temperature) {
-        mapper.save(temperature);
-    }
-
-    // Q2.9
-    public ListenableFuture<Void> saveAsync(TemperatureByDate temperature) {
-        return mapper.saveAsync(temperature);
-    }
-
-    public TemperatureByDate getById(String city, LocalDate date) {
-        return mapper.get(city, date);
-    }
-
-    /* cursotm queries with accessor */
-
-    // Q2.9
-    public List<TemperatureByDate> getByDate(LocalDate when) {
-        return accessor.getByDate(when).all();
+        throw new RuntimeException("implement me !");
     }
 
     public void save(TemperatureByDate ... temperatures) {
         Stream.of(temperatures).forEach(this::save);
     }
+
+    public ListenableFuture<Void> saveAsync(TemperatureByDate temperature) {
+        throw new RuntimeException("implement me !");
+    }
+
+    public TemperatureByDate getById(String city, LocalDate date) {
+        throw new RuntimeException("implement me !");
+    }
+
+    public List<TemperatureByDate> getByDate(LocalDate when) {
+        throw new RuntimeException("implement me !");
+    }
+
+
 }

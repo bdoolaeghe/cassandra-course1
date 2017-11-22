@@ -30,49 +30,33 @@ public class TemperatureService {
 
     // Q2.10
     public void createOrUpdate(Temperature temperature) {
-        // save in //
-        ListenableFuture<Void> futureByCity = temperatureByCityRepository.saveAsync(toTemperatureByCity(temperature));
-        ListenableFuture<Void> futureByDate = temperatureByDateRepository.saveAsync(toTemperatureBydate(temperature));
-
-        // wait for termination
-        try {
-            futureByCity.get();
-            futureByDate.get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException("fail to save temperature " + temperature, e);
-        }
+        throw new RuntimeException("implement me !");
     }
 
     // Q2.10
     public List<Temperature> getByCity(String city) {
-        return temperatureByCityRepository.getByCity(city)
-                .stream()
-                .map(TemperatureService::toDto)
-                .collect(toList());
+        throw new RuntimeException("implement me !");
     }
 
     // Q2.10
     public List<Temperature> getByDate(LocalDate date) {
-        return temperatureByDateRepository.getByDate(date)
-                .stream()
-                .map(TemperatureService::toDto)
-                .collect(toList());
+        throw new RuntimeException("implement me !");
     }
 
     public static TemperatureByCity toTemperatureByCity(Temperature t) {
-        return (t == null) ? null : new TemperatureByCity(t.getCity(), t.getDate(), t.getTemperature());
+        throw new RuntimeException("implement me !");
     }
 
     public static TemperatureByDate toTemperatureBydate(Temperature t) {
-        return (t == null) ? null : new TemperatureByDate(t.getDate(), t.getCity(), t.getTemperature());
+        throw new RuntimeException("implement me !");
     }
 
     public static Temperature toDto(TemperatureByDate t) {
-        return (t == null) ? null : new Temperature(t.getCity(), t.getDate(), t.getTemperature());
+        throw new RuntimeException("implement me !");
     }
 
     public static Temperature toDto(TemperatureByCity t) {
-        return (t == null) ? null : new Temperature(t.getCity(), t.getDate(), t.getTemperature());
+        throw new RuntimeException("implement me !");
     }
 
 }

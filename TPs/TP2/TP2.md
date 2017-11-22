@@ -1,8 +1,8 @@
 TP2 - Practice the java Datastax driver
 =======================================
-Clone the java Maven project [cassandra-course1/TPS/TP2](TPs/TP2), and import it in your favorite IDE. You can see the project is partly implemented...
+Clone the java Maven project [cassandra-course1/TPS/TP2](TPs/TP2), and import it in your favorite IDE. You can see the project is partly implemented, and some JUnit tests are implemented, but failing. At the end of TP all tests should be green !
 
-Now, write in [TemperatureByCityRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) the following methods, with a unit test in in [TemperatureByCityRepositoryTest](TPs/TP2/src/test/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepositoryTest.java), :
+Now, write in [TemperatureByCityRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) the following methods:
 * **[Q2.1]** _getById(city, date)_, returning the temperature **in a city at a given date** (hint: use the _Mapper<TemperatureByCity>_)
 * **[Q2.2]** _getByIdAsync(city, date)_, same -- **but asynchronous** -- mehtod as _getById(city, date)_  (hint: also use the Mapper<TemperatureByCity>)
 * **[Q2.3]** _getLastByCity(city)_, giving the **last temperature in a given city** (hint: use _TemperatureByCityAccessor_)
@@ -18,7 +18,7 @@ Extra
 
 Extra bis !
 -----------
-* **[Q2.9]** write in a new repository class [TemperatureByDateRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByDateRepository.java) the method _getByDate(date)_, to get the temperatures at a given date **in every city** (hint: use table temperature_by_date, with [create_table_temperature_by_date.cql](TPS/TP2/src/main/resources/cql/create_table_temperature_by_date.cql) and [insert_dataset_for_temperature_by_date.cql](TPS/TP2//src/main/resources/cql/insert_dataset_for_temperature_by_date.cql) )
+* **[Q2.9]** complete the [TemperatureByDate](TPs/TP2/src/main/java/fr/soat/cassandra/course1/model/TemperatureByDate.java) bean to map new table [temperature_by_date](TPS/TP2/src/main/resources/cql/create_table_temperature_by_date.cql) and complete the repository class [TemperatureByDateRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByDateRepository.java) the method _getByDate(date)_, to save and get the temperatures at a given date **in every city** (hint: use table temperature_by_date, with [create_table_temperature_by_date.cql](TPS/TP2/src/main/resources/cql/create_table_temperature_by_date.cql) and [insert_dataset_for_temperature_by_date.cql](TPS/TP2//src/main/resources/cql/insert_dataset_for_temperature_by_date.cql) )
 * **[Q2.10]** create an **aggregating service** [TemperatureService](TPs/TP2/src/main/java/fr/soat/cassandra/course1/service/TemperatureService.java), to:
  * save a temperature **in a city at a given date** (hint: delegate to the 2 underlying repositories [TemperatureByCityRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) and [TemperatureByDateRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByDateRepository.java))
  * get the temperatures in a **given city**
