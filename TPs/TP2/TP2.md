@@ -18,9 +18,9 @@ Bonus
 
 Super bonus
 -----------
-* [Q2.9] write in new repository class _TemperatureByDateRepository_ the method _getByDate(date)_, to get the temperatures in every city at a given date (hint: use table temperature_by_date, with [create_table_temperature_by_date.cql](TPS/TP2/src/main/resources/cql/create_table_temperature_by_date.cql) and [insert_dataset_for_temperature_by_date.cql](TPS/TP2//src/main/resources/cql/insert_dataset_for_temperature_by_date.cql) )
-* [Q2.10] create an aggregating service _TemperatureService_, to:
- * save a temperature in a city at a given date (hint: delegate to the 2 underlying repositories _TemperatureByCityRepository_ and _TemperatureByDateRepository_)
- * get the temperatures in a city at a given date
- * get the temperatures everywhere at a given date
+* [Q2.9] write in new repository class [TemperatureByDateRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByDateRepository.java) the method _getByDate(date)_, to get the temperatures in every city at a given date (hint: use table temperature_by_date, with [create_table_temperature_by_date.cql](TPS/TP2/src/main/resources/cql/create_table_temperature_by_date.cql) and [insert_dataset_for_temperature_by_date.cql](TPS/TP2//src/main/resources/cql/insert_dataset_for_temperature_by_date.cql) )
+* [Q2.10] create an aggregating service [TemperatureService](TPs/TP2/src/main/java/fr/soat/cassandra/course1/service/TemperatureService.java), to:
+ * save a temperature in a city at a given date (hint: delegate to the 2 underlying repositories [TemperatureByCityRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByCityRepository.java) and [TemperatureByDateRepository](TPs/TP2/src/main/java/fr/soat/cassandra/course1/repository/TemperatureByDateRepository.java))
+ * get the temperatures in a given city
+ * get the temperatures at a given date
 

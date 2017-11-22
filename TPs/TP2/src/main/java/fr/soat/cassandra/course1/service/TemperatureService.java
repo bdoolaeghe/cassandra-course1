@@ -28,7 +28,7 @@ public class TemperatureService {
         Stream.of(temperatures).forEach(this::createOrUpdate);
     }
 
-    // Q30
+    // Q2.10
     public void createOrUpdate(Temperature temperatures) {
         // save in //
         ListenableFuture<Void> futureByCity = temperatureByCityRepository.saveAsync(toTemperatureByCity(temperatures));
@@ -43,7 +43,7 @@ public class TemperatureService {
         }
     }
 
-    // Q30
+    // Q2.10
     public List<Temperature> getByCity(String city) {
         return temperatureByCityRepository.getByCity(city)
                 .stream()
@@ -51,7 +51,7 @@ public class TemperatureService {
                 .collect(toList());
     }
 
-    // Q30
+    // Q2.10
     public List<Temperature> getByDate(LocalDate date) {
         return temperatureByDateRepository.getByDate(date)
                 .stream()
