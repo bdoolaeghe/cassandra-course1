@@ -1,3 +1,4 @@
+![alt text](http://eswt.net/wp-content/uploads/2011/06/hands-on_workshop.jpg "Hands on cassandra !")
 Here is the training part of the cassandra course 1, related to the [slides](https://docs.google.com/presentation/d/1k1H8aedareHz4pVkB7e5FudakjMS5WnramuGYDeLSDI/edit#slide=id.p3)
 
 Training
