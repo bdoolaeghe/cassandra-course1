@@ -1,3 +1,5 @@
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cassandra_logo.svg/440px-Cassandra_logo.svg.png "TP1")
+
 TP1 - Practice CQL
 ==================
 _Install Cassandra server_
