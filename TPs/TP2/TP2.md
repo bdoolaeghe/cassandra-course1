@@ -1,3 +1,5 @@
+![alt text](https://linkurio.us/wp-content/uploads/2016/06/datastax_logo-600x140.jpg "TP2")
+
 TP2 - Practice the java Datastax driver
 =======================================
 Clone this git repository (if not done yet) and import TP2 Maven project in your favorite IDE. You can see the project is partly implemented, and some [JUnit tests]((src/test/java/fr/soat/cassandra/course1/) are implemented, but failing. At the end of TP all tests should be green !
