@@ -1,4 +1,4 @@
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cassandra_logo.svg/440px-Cassandra_logo.svg.png "TP1")
+![alt text](http://thelastpickle.com/images/monitoring-cassandra-with-intel-snap/Apache_Cassandra_ico.png "TP1")
 
 TP1 - Practice CQL
 ==================
