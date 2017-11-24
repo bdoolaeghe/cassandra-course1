@@ -1,3 +1,5 @@
+![alt text](http://thelastpickle.com/images/monitoring-cassandra-with-intel-snap/Apache_Cassandra_ico.png "TP1")
+
 TP1 - Practice CQL
 ==================
 _Install Cassandra server_
