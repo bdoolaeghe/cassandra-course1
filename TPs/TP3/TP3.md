@@ -1,10 +1,12 @@
 TP3 - FAULT TOLERANCE
 =====================
 
-h1. Installation
+Installation
+************
 Let's install and start a 3 node cassandra cluster (using docker-compose)...
 
-h2. install scope
+install scope
+-------------
 
 [Weave scope](https://www.weave.works/oss/scope/) will help to manage your cassandra cluster docker containers.
 
@@ -17,7 +19,8 @@ chmod +x ~/bin/scope &&
 
 * [open scope](http://localhost:4040) in a web browser.
 
-h2. install 3 node cassandra cluster
+install 3 node cassandra cluster
+--------------------------------
 
 A 3 node cassandra cluster is already configured in [docker-compose.yml](docker-compose.yml)
 
@@ -34,7 +37,8 @@ docker-compose logs -f
 Once the cluster is up, you should see the 3 connected containers on weave scope.
 
 
-h2. create keyspace, table, and insert data
+create keyspace, table, and insert data
+---------------------------------------
 With [scope](http://localhost:4040), open a terminal on one of the 3 cassandra node containers _(e.g. cassandra-node-0)_. The TPs sources are mounted in /TPs/.
 ```
 cqlsh -f /TPs/TP1/create_keyspace.cql
@@ -42,7 +46,8 @@ cqlsh -f /TPs/TP1/create_table_temperature_by_city.cql
 cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 ```
 
-h1. [Q3.1] experiment coordinator node
+[Q3.1] experiment coordinator node
+**********************************
 
 Let's try to query from any node: if you open a cqlsh from any cassandra node _(cassandra-node-0, cassandra-node-1, cassandra-node-2)_, you should be able to read the same inserted data:
 ```
@@ -57,7 +62,8 @@ cqlsh:my_keyspace> select count(*) from temperature_by_city ;
 
 ```
 
-h1. Data repartition
+Data repartition
+****************
 
 Let suppose one node has broken down...
 
@@ -77,8 +83,10 @@ cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'paris' ;
 cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'berlin' ;
 ```
 
-h1. Consistency tunning
+Consistency tunning
+***********************
 Node crash & play with CL
 
-h1. repair
+Repair
+**********
 try nodetools
