@@ -12,6 +12,8 @@ services:
       - "9160:9160"   # Thrift clients
     volumes:
         - ../../TPs:/TPs
+    environment:
+       - "JVM_OPTS=-Xmx512m -Xms256m"
 
   cassandra-node-1:
     container_name: cassandra-node-1
@@ -21,6 +23,7 @@ services:
         - ../../TPs:/TPs
     environment:
       - "CASSANDRA_SEEDS=cassandra-node-0"
+      - "JVM_OPTS=-Xmx512m -Xms256m"
     depends_on:
       - "cassandra-node-0"
 
@@ -34,5 +37,6 @@ services:
         - ../../TPs:/TPs
     environment:
       - "CASSANDRA_SEEDS=cassandra-node-0"
+      - "JVM_OPTS=-Xmx512m -Xms256m"
     depends_on:
       - "cassandra-node-0"
