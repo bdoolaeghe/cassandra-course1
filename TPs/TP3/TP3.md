@@ -87,6 +87,7 @@ cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'paris' ;
 cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'berlin' ;
 ```
 What's happening ?
+
 *The partition for 'berlin' can't be queried, because the node hosting the data is fallen. With no replication, when a node is lost, some data is unavailable.*
 
 ### Cluster with replication (RF=2)
@@ -100,7 +101,9 @@ cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 ```
 
 * Agin, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#user-content-cluster-with-no-replication). Conclusion ?
-*Thanks to replication, when a node is fallen, we can still get the data from a replica.*
+
+*Thanks to replication, when a node is fallen, we can 
+still get the data from a replica.*
 
 TP3.3) Tunable consistency
 --------------------------
