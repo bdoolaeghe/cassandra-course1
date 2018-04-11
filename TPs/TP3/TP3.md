@@ -61,6 +61,7 @@ cqlsh:my_keyspace> select count(*) from temperature_by_city ;
 (1 rows)
 
 ```
+*Any node can be contacted to query any data !*
 
 TP3.2) Data availability
 ------------------------
@@ -86,6 +87,7 @@ cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'paris' ;
 cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'berlin' ;
 ```
 What's happening ?
+*The partition for 'berlin' can't be queried, because the node hosting the data is fallen. With no replication, when a node is lost, some data is unavailable.*
 
 ### Cluster with replication (RF=2)
 Now, let's have some data replication. 
@@ -98,6 +100,7 @@ cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 ```
 
 * Agin, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#user-content-cluster-with-no-replication). Conclusion ?
+*Thanks to replication, when a node is fallen, we can still get the data from a replica.*
 
 TP3.3) Tunable consistency
 --------------------------
@@ -134,12 +137,4 @@ cqlsh:my_keyspace_rf2> SELECT count(*) from temperature_by_city ;
 
 (1 rows)
 ```
-
-### Repair
-
-try nodetools
-
-
-seed 
-= grosso modo dans config.yml la liste des nodes seed, qui donnent la liste des adresses des nodes du cluster
-un seed ne bootstrap pas (dl des données au startup)
+*As you can see, when a node is fallen, the client applicatin may accept to downgrade the consistency level to make the data available (but maybe not the last  version !)*
