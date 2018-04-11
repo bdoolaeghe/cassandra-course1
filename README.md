@@ -6,6 +6,7 @@ Training
 ========
 * [TP1](TPs/TP1/TP1.md)  - Practice CQL
 * [TP2](TPs/TP2/TP2.md)  - Practice the CQL java driver
+* [TP3](TPs/TP3/TP3.md)  - Practice on fault tolerance, data availability and tunable consistency
 
 FAQ
 ===
