@@ -101,17 +101,18 @@ cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 
 TP3.3) Tunable consistency
 --------------------------
-
-* in a cqlsh, display the current consistency level (CL):
+In a cqlsh, display the current consistency level (CL):
 ```
 cqlsh:my_keyspace_rf2> CONSISTENCY;
 Current consistency level is ONE.
 ```
-* shutdown cassandra-node-2:
+
+Shutdown cassandra-node-2:
 ```
 docker stop cassandra-node-2 
 ```
-* query the number of temperatures in CL=ALL:
+
+Query the number of temperatures in CL=ALL:
 ```
 cqlsh:my_keyspace_rf2> CONSISTENCY ALL
 Consistency level set to ALL.
@@ -120,7 +121,7 @@ cqlsh:my_keyspace_rf2> SELECT count(*) from temperature_by_city ;
 ReadTimeout: Error from server: code=1200 [Coordinator node timed out waiting for replica nodes' responses] message="Operation timed out - received only 1 responses." info={'received_responses': 1, 'required_responses': 2, 'consistency': 'ALL'}
 ```
 
-* query the number of temperatures, after downgrading CL to ONE:
+Query the number of temperatures, after downgrading CL to ONE:
 ```
 cqlsh:my_keyspace_rf2> CONSISTENCY ONE
 Consistency level set to ONE.
