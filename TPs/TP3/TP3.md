@@ -54,12 +54,6 @@ Let's try to query from each node: if you open a cqlsh from any cassandra node _
 cqlsh> use my_keyspace ;
 cqlsh:my_keyspace> select count(*) from temperature_by_city ;
 
- count
--------
-    38
-
-(1 rows)
-
 ```
 *Any node can be contacted to query any data !*
 
