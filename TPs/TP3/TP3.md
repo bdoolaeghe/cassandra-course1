@@ -97,7 +97,7 @@ cqlsh -f /TPs/TP1/create_table_temperature_by_city.cql
 cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 ```
 
-* Agin, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#Cluster%20with%20no%20replication). Conclusion ?
+* Agin, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#user-content-cluster-with-no-replication). Conclusion ?
 
 TP3.3) Tunable consistency
 --------------------------
