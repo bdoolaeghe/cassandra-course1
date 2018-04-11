@@ -55,7 +55,7 @@ cqlsh> use my_keyspace ;
 cqlsh:my_keyspace> select count(*) from temperature_by_city ;
 
 ```
-*Any node can be contacted to query any data !*
+
 
 TP3.2) Data availability
 ------------------------
