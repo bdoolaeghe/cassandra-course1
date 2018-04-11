@@ -134,9 +134,6 @@ cqlsh:my_keyspace_rf2> SELECT count(*) from temperature_by_city ;
 (1 rows)
 ```
 
-
-Node crash & play with CL
-
 ### Repair
 
 try nodetools
