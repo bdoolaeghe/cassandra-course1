@@ -86,8 +86,8 @@ cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'paris' ;
 cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'berlin' ;
 ```
 What's happening ?
-### Cluster with replication (RF=2)
 
+### Cluster with replication (RF=2)
 Now, let's have some data replication. 
 
 * From any node create a new *my_keyspace_rf2* keyspace with replication (RF=2):
