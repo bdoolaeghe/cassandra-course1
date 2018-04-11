@@ -82,7 +82,6 @@ cqlsh:my_keyspace> SELECT * from temperature_by_city where city = 'berlin' ;
 ```
 What's happening ?
 
-*The partition for 'berlin' can't be queried, because the node hosting the data is fallen. With no replication, when a node is lost, some data is unavailable.*
 
 ### Cluster with replication (RF=2)
 Now, let's have some data replication. 
@@ -94,10 +93,8 @@ cqlsh -f /TPs/TP1/create_table_temperature_by_city.cql
 cqlsh -f /TPs/TP1/insert_dataset_for_temperature_by_city.cql
 ```
 
-* Agin, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#user-content-cluster-with-no-replication). Conclusion ?
+* Again, shutdown a node, and query the data from 'paris' and 'berlin' as we did [with no replication](#user-content-cluster-with-no-replication). Conclusion ?
 
-*Thanks to replication, when a node is fallen, we can 
-still get the data from a replica.*
 
 TP3.3) Tunable consistency
 --------------------------
@@ -115,23 +112,11 @@ docker stop cassandra-node-2
 Query the number of temperatures in CL=ALL:
 ```
 cqlsh:my_keyspace_rf2> CONSISTENCY ALL
-Consistency level set to ALL.
-
 cqlsh:my_keyspace_rf2> SELECT count(*) from temperature_by_city ;
-ReadTimeout: Error from server: code=1200 [Coordinator node timed out waiting for replica nodes' responses] message="Operation timed out - received only 1 responses." info={'received_responses': 1, 'required_responses': 2, 'consistency': 'ALL'}
 ```
 
 Query the number of temperatures, after downgrading CL to ONE:
 ```
 cqlsh:my_keyspace_rf2> CONSISTENCY ONE
-Consistency level set to ONE.
-
 cqlsh:my_keyspace_rf2> SELECT count(*) from temperature_by_city ;
-
- count
--------
-    38
-
-(1 rows)
 ```
-*As you can see, when a node is fallen, the client applicatin may accept to downgrade the consistency level to make the data available (but maybe not the last  version !)*
